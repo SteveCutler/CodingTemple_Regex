@@ -13,11 +13,11 @@
 
 # Code Example:
 
-import re
+# import re
 
-text = "Name: John Doe; Age: 30; Occupation: Engineer; Location: New York"
-occupation = re.search(r"(?<=Occupation: )\w+",text)
-print (occupation.group())
+# text = "Name: John Doe; Age: 30; Occupation: Engineer; Location: New York"
+# occupation = re.search(r"(?<=Occupation: )\w+",text)
+# print (occupation.group())
 
 # # Extract the Occupation from the text
 # # Your code here
@@ -34,13 +34,15 @@ print (occupation.group())
 # with 'http://' or 'https://', followed by a domain name.
 
 # Code Example:
-
+import re
 urls = ["https://example.com", "www.example.com", "http://test.com"]
 # # Validate each URL in the list
 # # Your code here
 for url in urls:
-    correctUrl = re.findall(r"^(http://|https://)\w]+.[\w{3}]",url)
-    print(correctUrl)
+    match = re.match(r"^(http:\/\/|https:\/\/)[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z]{2,}",url)
+    if match:
+        print(match.group())
+    
 # Expected Outcome:
 
 #     Correctly identify and categorize valid and invalid URLs from the list.
